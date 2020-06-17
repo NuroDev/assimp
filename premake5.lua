@@ -1,3 +1,12 @@
+-- ===============================================================
+--
+-- Inspired by: 
+-- 	- @AminAliari/assimp (https://github.com/AminAliari/assimp)
+-- 	- @rockchik/assimp (https://github.com/rockchik/assimp)
+-- 	- @jing-interactive/Cinder-Assimp (https://github.com/jing-interactive/Cinder-Assimp)
+--
+-- ===============================================================
+
 project "assimp"
 	kind "StaticLib"
 	language "C++"

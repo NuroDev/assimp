@@ -2,21 +2,21 @@ project "assimp"
 	kind "StaticLib"
 	language "C++"
 	staticruntime "On"
-	cppdialect "C++11"
+	cppdialect "C++17"
 
 	targetdir ("target/" .. outputDir .. "/%{prj.name}")
 	objdir ("target/tmp/" .. outputDir .. "/%{prj.name}")
-	
-	defines {
-		"_CRT_SECURE_NO_WARNINGS",
-		"_CRT_SECURE_NO_DEPRECATE",
-	}
 
-	disablewarnings {
-		"4244",
-		"4305",
-		"4996",
-	}
+	-- defines {
+	-- 	"_CRT_SECURE_NO_WARNINGS",
+	-- 	"_CRT_SECURE_NO_DEPRECATE",
+	-- }
+
+	-- disablewarnings {
+	-- 	"4244",
+	-- 	"4305",
+	-- 	"4996",
+	-- }
 
 	sysincludedirs {
 		"include",
@@ -27,6 +27,7 @@ project "assimp"
 
 	includedirs {
 		"include",
+		"code/",
 		"contrib/irrXML",
 		"contrib/rapidjson/include",
 		"contrib/zlib",
@@ -77,7 +78,7 @@ project "assimp"
 		"ASSIMP_BUILD_NO_XGL_IMPORTER",
 		-- "ASSIMP_BUILD_NO_FBX_IMPORTER",
 		"ASSIMP_BUILD_NO_ASSBIN_IMPORTER",
-		-- "ASSIMP_BUILD_NO_GLTF_IMPORTER",
+		"ASSIMP_BUILD_NO_GLTF_IMPORTER",
 		"ASSIMP_BUILD_NO_C4D_IMPORTER",
 		"ASSIMP_BUILD_NO_3MF_IMPORTER",
 		"ASSIMP_BUILD_NO_X3D_IMPORTER",
@@ -118,65 +119,67 @@ project "assimp"
 
 	files {
 		"include/**",
-		"code/Assimp.cpp",
-		"code/BaseImporter.cpp",
-		"code/ColladaLoader.cpp",
-		"code/ColladaParser.cpp",
-		"code/CreateAnimMesh.cpp",
-		"code/PlyParser.cpp",
-		"code/PlyLoader.cpp",
-		"code/BaseProcess.cpp",
-		"code/FBXAnimation.cpp",
-		"code/EmbedTexturesProcess.cpp",
-		"code/FBXBinaryTokenizer.cpp",
-		"code/FBXConverter.cpp",
-		"code/FBXDeformer.cpp",
-		"code/FBXDocument.cpp",
-		"code/FBXDocumentUtil.cpp",
-		"code/FBXImporter.cpp",
-		"code/FBXMaterial.cpp",
-		"code/FBXMeshGeometry.cpp",
-		"code/FBXModel.cpp",
-		"code/FBXNodeAttribute.cpp",
-		"code/FBXParser.cpp",
-		"code/FBXProperties.cpp",
-		"code/FBXTokenizer.cpp",
-		"code/FBXUtil.cpp",
-		"code/ConvertToLHProcess.cpp",
-		"code/DefaultIOStream.cpp",
-		"code/DefaultIOSystem.cpp",
-		"code/DefaultLogger.cpp",
-		"code/GenVertexNormalsProcess.cpp",
-		"code/Importer.cpp",
-		"code/ImporterRegistry.cpp",
-		"code/MaterialSystem.cpp",
-		"code/PostStepRegistry.cpp",
-		"code/ProcessHelper.cpp",
-		"code/scene.cpp",
-		"code/ScenePreprocessor.cpp",
-		"code/ScaleProcess.cpp",
-		"code/SGSpatialSort.cpp",
-		"code/SkeletonMeshBuilder.cpp",
-		"code/SpatialSort.cpp",
-		"code/TriangulateProcess.cpp",
-		"code/ValidateDataStructure.cpp",
-		"code/Version.cpp",
-		"code/VertexTriangleAdjacency.cpp",
-		"code/ObjFileImporter.cpp",
-		"code/ObjFileMtlImporter.cpp",
-		"code/ObjFileParser.cpp",
-		"code/glTFImporter.cpp",
-		"code/glTF2Importer.cpp",
-		"code/MakeVerboseFormat.cpp",
-		"code/CalcTangentsProcess.cpp",
-		"code/ScaleProcess.cpp",
-		"code/EmbedTexturesProcess.cpp",
+
+		"code/AssetLib/Collada/ColladaLoader.cpp",
+		"code/AssetLib/Collada/ColladaParser.cpp",
+		"code/AssetLib/FBX/FBXAnimation.cpp",
+		"code/AssetLib/FBX/FBXBinaryTokenizer.cpp",
+		"code/AssetLib/FBX/FBXConverter.cpp",
+		"code/AssetLib/FBX/FBXDeformer.cpp",
+		"code/AssetLib/FBX/FBXDocument.cpp",
+		"code/AssetLib/FBX/FBXDocumentUtil.cpp",
+		"code/AssetLib/FBX/FBXImporter.cpp",
+		"code/AssetLib/FBX/FBXMaterial.cpp",
+		"code/AssetLib/FBX/FBXMeshGeometry.cpp",
+		"code/AssetLib/FBX/FBXModel.cpp",
+		"code/AssetLib/FBX/FBXNodeAttribute.cpp",
+		"code/AssetLib/FBX/FBXParser.cpp",
+		"code/AssetLib/FBX/FBXProperties.cpp",
+		"code/AssetLib/FBX/FBXTokenizer.cpp",
+		"code/AssetLib/FBX/FBXUtil.cpp",
+		"code/AssetLib/Obj/ObjFileImporter.cpp",
+		"code/AssetLib/Obj/ObjFileMtlImporter.cpp",
+		"code/AssetLib/Obj/ObjFileParser.cpp",
+		"code/AssetLib/Ply/PlyLoader.cpp",
+		"code/AssetLib/Ply/PlyParser.cpp",
+
+		"code/Common/Assimp.cpp",
+		"code/Common/BaseImporter.cpp",
+		"code/Common/BaseProcess.cpp",
+		"code/Common/CreateAnimMesh.cpp",
+		"code/Common/DefaultIOStream.cpp",
+		"code/Common/DefaultIOSystem.cpp",
+		"code/Common/DefaultLogger.cpp",
+		"code/Common/Importer.cpp",
+		"code/Common/ImporterRegistry.cpp",
+		"code/Common/PostStepRegistry.cpp",
+		"code/Common/revision.h",
+		"code/Common/scene.cpp",
+		"code/Common/ScenePreprocessor.cpp",
+		"code/Common/SGSpatialSort.cpp",
+		"code/Common/SkeletonMeshBuilder.cpp",
+		"code/Common/SpatialSort.cpp",
+		"code/Common/Version.cpp",
+		"code/Common/VertexTriangleAdjacency.cpp",
+
+		"code/Material/MaterialSystem.cpp",
+
+		"code/PostProcessing/CalcTangentsProcess.cpp",
+		"code/PostProcessing/ConvertToLHProcess.cpp",
+		"code/PostProcessing/EmbedTexturesProcess.cpp",
+		"code/PostProcessing/GenVertexNormalsProcess.cpp",
+		"code/PostProcessing/MakeVerboseFormat.cpp",
+		"code/PostProcessing/ProcessHelper.cpp",
+		"code/PostProcessing/ScaleProcess.cpp",
+		"code/PostProcessing/TriangulateProcess.cpp",
+		"code/PostProcessing/ValidateDataStructure.cpp",
+
 		"contrib/irrXML/*",
 	}
-	
+
 	filter "system:windows"
 		systemversion "latest"
-	
+
 	filter "configurations:Debug"
 		runtime "Debug"
 		symbols "on"

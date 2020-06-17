@@ -48,6 +48,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "revision.h"
 
+static const unsigned int MajorVersion = 4;
+static const unsigned int MinorVersion = 1;
+
 // --------------------------------------------------------------------------------
 // Legal information string - don't remove this.
 static const char *LEGAL_INFORMATION =

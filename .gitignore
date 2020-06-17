@@ -30,7 +30,6 @@ CMakeLists.txt.user
 assimp.pc
 assimp.aps
 contrib/zlib/zlib.pc
-include/assimp/config.h
 unit.vcxproj.user
 
 # CMake

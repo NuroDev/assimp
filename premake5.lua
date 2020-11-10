@@ -13,8 +13,8 @@ project "assimp"
 	staticruntime "On"
 	cppdialect "C++17"
 
-	targetdir ("target/" .. outputDir .. "/%{prj.name}")
-	objdir ("target/tmp/" .. outputDir .. "/%{prj.name}")
+	targetdir ("%{wks.location}/target/" .. targetDir .. "/%{prj.name}")
+	objdir ("%{wks.location}/target/tmp/" .. targetDir .. "/%{prj.name}")
 
 	-- defines {
 	-- 	"_CRT_SECURE_NO_WARNINGS",
